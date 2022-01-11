@@ -1,0 +1,8 @@
+@import "../../styles/variables.scss";
+
+.footer-text {
+  font-family: $secondFont;
+  font-size: $smallSize;
+  color: $footerTextColor;
+  padding: 23px 10px;
+}

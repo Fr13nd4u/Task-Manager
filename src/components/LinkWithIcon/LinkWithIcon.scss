@@ -1,0 +1,18 @@
+@import "../../styles/variables.scss";
+
+.link-with-icon {
+  display: flex;
+  align-items: flex-end;
+  font-size: $smallSize;
+  font-weight: 300;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  svg {
+    margin-right: 10px;
+    width: 1.25em;
+    height: 1.25em;
+  }
+}
