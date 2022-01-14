@@ -18,8 +18,8 @@ const App: FC = () => {
 
   return (
     <SiderContext.Provider value={{ showSider, setSider }}>
-      <Layout className="app">
-        <Header className="app-header">
+      <div className="app">
+        <Header>
           <div className="container">
             <HeaderC />
           </div>
@@ -32,7 +32,7 @@ const App: FC = () => {
             <FooterC />
           </div>
         </Footer>
-      </Layout>
+      </div>
     </SiderContext.Provider>
   );
 };

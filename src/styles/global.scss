@@ -1,8 +1,13 @@
+@import "antd/dist/antd.css";
 @import "../styles/variables.scss";
 
 * {
   box-sizing: border-box;
   padding: 0;
+  margin: 0;
+}
+
+p {
   margin: 0;
 }
 
@@ -21,15 +26,6 @@ body {
   min-height: 100vh;
   display: grid;
   align-content: space-between;
-
-  &-header {
-    padding: 90px 30px 0;
-  }
-
-  &-footer {
-    background-color: $white;
-    align-items: center;
-  }
 }
 
 hr {
@@ -37,6 +33,32 @@ hr {
 }
 
 input {
-  outline: none;
-  border: none;
+  outline: none !important;
+  border: none !important;
+}
+
+.ant-layout-header {
+  padding: 90px 30px 0;
+  height: unset;
+  line-height: unset;
+  background: inherit;
+}
+
+.ant-layout {
+  background: local;
+}
+
+.ant-layout-footer {
+  padding: 0;
+  background-color: $white;
+  align-items: center;
+}
+
+.ant-card {
+  background: inherit;
+  width: 50%;
+  margin: auto;
+  &-bordered {
+    border: none;
+  }
 }

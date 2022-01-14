@@ -9,6 +9,7 @@ const { Meta } = Card;
 
 const Empty: FC = () => {
   const { showSider } = useContext(SiderContext);
+
   return (
     <Card cover={<img alt="example" src={EmptyImg} />}>
       {!showSider && (

@@ -1,9 +1,6 @@
 @import "../../styles/variables.scss";
 
 .ant-card {
-  width: 50%;
-  margin: auto;
-
   img {
     width: 100%;
     margin-bottom: 40px;
@@ -15,12 +12,12 @@
   }
 
   &-meta-title {
-    font-size: $titleSize;
-    margin-bottom: 10px;
+    font-size: $titleSize !important;
+    margin-bottom: 10px !important;
   }
 
   &-meta-description {
-    color: $lightTextColor;
+    color: $lightTextColor !important;
     font-size: $textSize;
     font-weight: 300;
     line-height: 25px;
