@@ -1,19 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Layout } from "antd";
 
+import { SiderContext } from "../../App";
 import AppRouter from "../AppRouter";
+import Sider from "../Sider";
 
 import "./ContentWraper.scss";
 
-const { Content } = Layout;
-
 const ContentWraper = () => {
+  const { showSider } = useContext(SiderContext);
+
   return (
     <Layout className="content">
-      <Content>
-        <AppRouter />
-      </Content>
-      <Content className="sider">Sider</Content>
+      <AppRouter />
+      {showSider && <Sider />}
     </Layout>
   );
 };

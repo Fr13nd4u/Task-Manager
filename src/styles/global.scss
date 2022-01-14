@@ -32,6 +32,10 @@ body {
   }
 }
 
+hr {
+  border: 1px solid $borderColor;
+}
+
 input {
   outline: none;
   border: none;

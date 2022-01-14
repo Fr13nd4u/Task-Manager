@@ -3,12 +3,8 @@
 .link-with-icon {
   display: flex;
   align-items: flex-end;
-  font-size: $smallSize;
-  font-weight: 300;
-
-  &:hover {
-    cursor: pointer;
-  }
+  font-size: $extraSmallSize;
+  font-weight: 500;
 
   svg {
     margin-right: 10px;

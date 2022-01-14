@@ -1,11 +1,12 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { emptyRoutes, RouteNames, tasksRoutes } from "../../router";
+import { useTasks } from "../../hooks/useTasks";
 
 const AppRouter = () => {
-  const isEmpty = true;
+  const { tasks } = useTasks();
 
-  return isEmpty ? (
+  return tasks.length === 0 ? (
     <Routes>
       {emptyRoutes.map((route) => (
         <Route path={route.path} element={<route.element />} key={route.path} />

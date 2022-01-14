@@ -1,5 +1,5 @@
 // Core
-import React, { FC } from "react";
+import React, { createContext, FC, useState } from "react";
 import { Layout } from "antd";
 
 // Components
@@ -11,24 +11,29 @@ import ContentWraper from "./components/ContentWraper";
 import "./styles/global.scss";
 
 const { Header, Footer } = Layout;
+export const SiderContext = createContext<any>(null);
 
 const App: FC = () => {
+  const [showSider, setSider] = useState(false);
+
   return (
-    <Layout className="app">
-      <Header className="app-header">
+    <SiderContext.Provider value={{ showSider, setSider }}>
+      <Layout className="app">
+        <Header className="app-header">
+          <div className="container">
+            <HeaderC />
+          </div>
+        </Header>
         <div className="container">
-          <HeaderC />
+          <ContentWraper />
         </div>
-      </Header>
-      <div className="container">
-        <ContentWraper />
-      </div>
-      <Footer className="app-footer">
-        <div className="container">
-          <FooterC />
-        </div>
-      </Footer>
-    </Layout>
+        <Footer className="app-footer">
+          <div className="container">
+            <FooterC />
+          </div>
+        </Footer>
+      </Layout>
+    </SiderContext.Provider>
   );
 };
 
