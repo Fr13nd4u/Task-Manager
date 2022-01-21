@@ -15,9 +15,31 @@ export const SiderContext = createContext<any>(null);
 
 const App: FC = () => {
   const [showSider, setSider] = useState(false);
+  const tegs = [
+    {
+      name: "Sketch",
+      color: "#FFAB2B",
+    },
+    {
+      name: "Spotify",
+      color: "#6DD230",
+    },
+    {
+      name: "Dribble",
+      color: "#FE4D97",
+    },
+    {
+      name: "Behance",
+      color: "#4D7CFE",
+    },
+    {
+      name: "UX",
+      color: "#778CA2",
+    },
+  ];
 
   return (
-    <SiderContext.Provider value={{ showSider, setSider }}>
+    <SiderContext.Provider value={{ showSider, setSider, tegs }}>
       <div className="app">
         <Header>
           <div className="container">

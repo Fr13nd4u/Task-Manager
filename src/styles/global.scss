@@ -35,6 +35,7 @@ hr {
 input {
   outline: none !important;
   border: none !important;
+  box-shadow: none !important;
 }
 
 .ant-layout-header {
@@ -58,7 +59,29 @@ input {
   background: inherit;
   width: 50%;
   margin: auto;
+
   &-bordered {
     border: none;
   }
+}
+
+.ant-form-item-control-input {
+  min-height: 0 !important;
+}
+
+.ant-form-item-label > label::after {
+  content: "";
+  margin: 0;
+}
+
+.ant-input::placeholder {
+  color: $placeholderColor;
+}
+
+.ant-picker,
+.ant-picker:hover,
+.ant-picker-focused {
+  border: none;
+  outline: none;
+  box-shadow: none;
 }

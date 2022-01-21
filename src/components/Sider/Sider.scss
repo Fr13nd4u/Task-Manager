@@ -4,6 +4,7 @@
   background: $white;
   border-radius: 4px;
   width: 672px;
+  margin-bottom: 30px;
 
   &-wrap {
     padding: 20px 30px 12px;
@@ -12,4 +13,57 @@
       color: $lightTextColor;
     }
   }
+}
+
+.ant-input,
+.ant-picker {
+  padding: 0 !important;
+}
+
+.input-title {
+  font-size: $titleSize !important;
+}
+
+.input-block {
+  display: grid !important;
+  margin-bottom: 30px !important;
+
+  .ant-form-item-label {
+    text-align: left;
+    margin-bottom: 10px;
+
+    label {
+      font-size: $textSize;
+    }
+  }
+}
+
+.due .ant-form-item-label label {
+  font-size: $smallSize;
+  color: $placeholderColor;
+}
+
+.ant-picker-input {
+  flex-direction: row-reverse;
+
+  input {
+    text-transform: uppercase;
+    font-size: $extraSmallSize !important;
+
+    &::placeholder {
+      color: $placeholderColor !important;
+      font-size: $extraSmallSize !important;
+    }
+  }
+}
+
+.ant-picker-suffix {
+  margin: 0 15px 2px 0 !important;
+  color: $darkTextColor !important;
+}
+
+.ant-picker-clear {
+  right: -8px !important;
+  top: calc(50% - 1px) !important;
+  color: $blue !important;
 }

@@ -1,14 +1,40 @@
-import React from "react";
+import React, { useContext } from "react";
 import LinkWithIcon from "../LinkWithIcon";
 import moment from "moment";
 import { CheckSquareOutlined } from "@ant-design/icons";
+import { Button } from "antd";
+import {
+  Input,
+  SubmitButton,
+  ResetButton,
+  DatePicker,
+  Checkbox,
+  Radio,
+  Form,
+} from "formik-antd";
 import { Formik } from "formik";
-import { Form, Input, Button, DatePicker } from "antd";
 import "./Sider.scss";
+import { SiderContext } from "../../App";
+
+interface IFormValues {
+  title: string;
+  date: object;
+  description: string;
+}
 
 const Sider = () => {
-  const disabledDate = (current: any) => {
-    return current && current < moment().endOf("day");
+  const { tegs } = useContext(SiderContext);
+
+  const today = moment().format("DD MMM Y");
+
+  const initialValues: IFormValues = {
+    title: "",
+    date: moment(today, "DD MMM Y"),
+    description: "",
+  };
+
+  const disabledDate = (current: object) => {
+    return current && current < moment().add(-1, "days");
   };
 
   return (
@@ -19,34 +45,76 @@ const Sider = () => {
       <hr />
       <div className="sider-wrap">
         <Formik
-          initialValues={{}}
+          initialValues={initialValues}
           onSubmit={(values, { resetForm }) => {
-            console.log("submit /n", JSON.stringify(values));
+            console.log("submit: ", values);
+          }}
+          validate={(values) => {
+            if (!values.title) {
+              return { title: "title is required" };
+            }
+            return undefined;
           }}
         >
           {({ values }) => (
-            <Form name="control-hooks">
+            <Form>
               <Form.Item
                 name="title"
-                rules={[{ required: true, message: "Please input title!" }]}
+                className="input-block"
+                hasFeedback={true}
+                showValidateSuccess={true}
               >
-                <Input placeholder="Task Title" />
+                <Input
+                  name="title"
+                  placeholder="Task Title"
+                  className="input-title"
+                />
               </Form.Item>
 
-              <Form.Item name="Description" label="description">
-                <Input placeholder="Descrive your event" />
+              <Form.Item name="date" label="Due to" className="input-block due">
+                <DatePicker
+                  name="date"
+                  format="DD MMM Y"
+                  disabledDate={disabledDate}
+                  placeholder={today}
+                />
               </Form.Item>
 
-              <Form.Item label="Due to">
-                <DatePicker format="YYYY-MM-DD" disabledDate={disabledDate} />
+              <Form.Item
+                name="description"
+                label="Description"
+                className="input-block"
+              >
+                <Input name="description" placeholder="Descrive your event" />
               </Form.Item>
 
-              <Form.Item>
-                <Button htmlType="button">Reset</Button>
-                <Button type="primary" htmlType="submit">
-                  Save
-                </Button>
+              <Form.Item
+                name="сhecklists"
+                label="Checklist"
+                className="input-block"
+              >
+                <Checkbox name="сhecklist">
+                  <Input name="listValue" placeholder="Add more" />
+                </Checkbox>
+                <Button>Add more</Button>
               </Form.Item>
+
+              <Form.Item name="tegs">
+                <Radio.Group name="tegs">
+                  {tegs.map((teg: any, index: number) => (
+                    <Radio.Button
+                      value={teg}
+                      key={index}
+                      style={{ color: teg.color }}
+                    >
+                      {teg.name}
+                    </Radio.Button>
+                  ))}
+                </Radio.Group>
+              </Form.Item>
+
+              <ResetButton>Reset</ResetButton>
+              <SubmitButton>Save</SubmitButton>
             </Form>
           )}
         </Formik>
@@ -56,7 +124,3 @@ const Sider = () => {
 };
 
 export default Sider;
-
-interface IFormValues {
-  title: string;
-}

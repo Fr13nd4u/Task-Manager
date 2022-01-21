@@ -21,28 +21,10 @@ const initialState = {
 //           checked: false,
 //         },
 //       ],
-//       tegs: [
-//         {
-//           name: 'Sketch',
-//           color: '#FFAB2B',
-//         },
-//         {
-//           name: 'Spotify',
-//           color: '#6DD230',
-//         },
-//         {
-//           name: 'Dribble',
-//           color: '#FE4D97',
-//         },
-//         {
-//           name: 'Behance',
-//           color: '#4D7CFE',
-//         },
-//         {
-//           name: 'UX',
-//           color: '#778CA2',
-//         },
-//       ]
+//       teg: {
+//         name: 'Sketch',
+//         color: '#FFAB2B',
+//       },
 //     }
 //   ]
 // }
