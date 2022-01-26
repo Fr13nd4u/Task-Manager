@@ -46,7 +46,7 @@ const App: FC = () => {
             <HeaderC />
           </div>
         </Header>
-        <div className="container">
+        <div className="container" style={{ width: "100%" }}>
           <ContentWraper />
         </div>
         <Footer className="app-footer">

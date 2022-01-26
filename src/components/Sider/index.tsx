@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
-import LinkWithIcon from "../LinkWithIcon";
+import React, { useContext, useState } from "react";
 import moment from "moment";
-import { CheckSquareOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { Formik } from "formik";
 import {
   Input,
   SubmitButton,
@@ -12,18 +10,27 @@ import {
   Radio,
   Form,
 } from "formik-antd";
-import { Formik } from "formik";
-import "./Sider.scss";
+import { CheckSquareOutlined } from "@ant-design/icons";
+
 import { SiderContext } from "../../App";
+import { Teg } from "../Teg";
+import LinkWithIcon from "../LinkWithIcon";
+
+import "./Sider.scss";
 
 interface IFormValues {
   title: string;
   date: object;
-  description: string;
+  description?: string;
+  сhecked: [];
 }
 
 const Sider = () => {
   const { tegs } = useContext(SiderContext);
+  const [value, setValue] = useState("");
+  const [input, setInput] = useState("");
+
+  const checklist = ["Alfa", "Beta"];
 
   const today = moment().format("DD MMM Y");
 
@@ -31,10 +38,19 @@ const Sider = () => {
     title: "",
     date: moment(today, "DD MMM Y"),
     description: "",
+    сhecked: [],
   };
 
   const disabledDate = (current: object) => {
     return current && current < moment().add(-1, "days");
+  };
+
+  const handleAddCheck = (event: any) => {
+    event.preventDefault();
+
+    if (value.trim()) {
+      checklist.push(value);
+    }
   };
 
   return (
@@ -51,7 +67,10 @@ const Sider = () => {
           }}
           validate={(values) => {
             if (!values.title) {
-              return { title: "title is required" };
+              return { title: "Title is required" };
+            }
+            if (values.title.length < 3) {
+              return { title: "Title must be more than 3 characters" };
             }
             return undefined;
           }}
@@ -85,30 +104,38 @@ const Sider = () => {
                 label="Description"
                 className="input-block"
               >
-                <Input name="description" placeholder="Descrive your event" />
+                <Input.TextArea
+                  name="description"
+                  placeholder="Descrive your event"
+                />
               </Form.Item>
 
-              <Form.Item
-                name="сhecklists"
-                label="Checklist"
-                className="input-block"
-              >
-                <Checkbox name="сhecklist">
-                  <Input name="listValue" placeholder="Add more" />
-                </Checkbox>
-                <Button>Add more</Button>
-              </Form.Item>
+              <Checkbox.Group name="сhecked">
+                {checklist.map((item: string, index: number) => (
+                  <Checkbox name="сhecked" value={item} key={index}>
+                    <Input
+                      name={item}
+                      defaultValue={item}
+                      onChange={(event) => setInput(event.target.value)}
+                    />
+                  </Checkbox>
+                ))}
+              </Checkbox.Group>
+
+              <Checkbox name="addMore" disabled checked={false}>
+                <Input
+                  name="addMore"
+                  value={value}
+                  placeholder="Add more"
+                  onChange={(event) => setValue(event.target.value)}
+                  onBlur={handleAddCheck}
+                />
+              </Checkbox>
 
               <Form.Item name="tegs">
-                <Radio.Group name="tegs">
+                <Radio.Group name="tegs" className="tegs">
                   {tegs.map((teg: any, index: number) => (
-                    <Radio.Button
-                      value={teg}
-                      key={index}
-                      style={{ color: teg.color }}
-                    >
-                      {teg.name}
-                    </Radio.Button>
+                    <Teg key={index} teg={teg} />
                   ))}
                 </Radio.Group>
               </Form.Item>

@@ -3,11 +3,11 @@
 .sider {
   background: $white;
   border-radius: 4px;
-  width: 672px;
   margin-bottom: 30px;
+  height: 700px;
 
   &-wrap {
-    padding: 20px 30px 12px;
+    padding: 20px 30px;
 
     .link-with-icon {
       color: $lightTextColor;
@@ -43,27 +43,10 @@
   color: $placeholderColor;
 }
 
-.ant-picker-input {
-  flex-direction: row-reverse;
-
-  input {
-    text-transform: uppercase;
-    font-size: $extraSmallSize !important;
-
-    &::placeholder {
-      color: $placeholderColor !important;
-      font-size: $extraSmallSize !important;
-    }
-  }
-}
-
 .ant-picker-suffix {
   margin: 0 15px 2px 0 !important;
-  color: $darkTextColor !important;
 }
 
-.ant-picker-clear {
-  right: -8px !important;
-  top: calc(50% - 1px) !important;
-  color: $blue !important;
+textarea.ant-input {
+  padding: 5px !important;
 }

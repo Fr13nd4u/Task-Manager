@@ -85,3 +85,43 @@ input {
   outline: none;
   box-shadow: none;
 }
+
+.ant-radio-button-wrapper-disabled {
+  cursor: default;
+}
+
+.ant-picker-input {
+  flex-direction: row-reverse;
+
+  input {
+    text-transform: uppercase;
+    font-size: $extraSmallSize !important;
+
+    &::placeholder {
+      color: $placeholderColor !important;
+      font-size: $extraSmallSize !important;
+    }
+  }
+}
+
+.ant-picker-disabled {
+  background: inherit !important;
+  cursor: default !important;
+
+  input[disabled] {
+    &::placeholder {
+      color: $darkTextColor !important;
+    }
+    cursor: default !important;
+  }
+}
+
+.ant-picker-suffix {
+  color: $darkTextColor !important;
+}
+
+.ant-picker-clear {
+  right: -8px !important;
+  top: calc(50% - 1px) !important;
+  color: $blue !important;
+}

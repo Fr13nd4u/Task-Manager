@@ -1,7 +1,26 @@
-import React from "react";
+import React, { FC } from "react";
+import { useTasks } from "../../hooks/useTasks";
+import TaskItem from "./TaskItem";
 
-const Tasks = () => {
-  return <div>Tasks</div>;
+import "./Tasks.scss";
+
+const Tasks: FC = () => {
+  const { tasks } = useTasks();
+
+  console.log();
+
+  return (
+    <div className="tasks">
+      {tasks.map((task: any) => (
+        <TaskItem
+          key={task.id}
+          title={task.title}
+          date={task.date}
+          teg={task.teg}
+        />
+      ))}
+    </div>
+  );
 };
 
 export default Tasks;

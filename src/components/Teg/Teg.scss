@@ -1,0 +1,9 @@
+.ant-radio-button-wrapper {
+  margin-right: 13px !important;
+  border: none !important;
+  border-radius: 4px !important;
+
+  &::before {
+    display: none !important;
+  }
+}
