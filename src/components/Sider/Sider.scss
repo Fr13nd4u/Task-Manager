@@ -26,9 +26,9 @@
   font-size: $titleSize !important;
 }
 
-.input-block {
+.input-block,
+.chekbox-block {
   display: grid !important;
-  margin-bottom: 30px !important;
 
   .ant-form-item-label {
     text-align: left;
@@ -37,6 +37,28 @@
     label {
       font-size: $textSize;
     }
+  }
+}
+
+.input-block {
+  margin-bottom: 30px !important;
+}
+
+.chekbox-block {
+  margin-bottom: 0 !important;
+}
+
+.addMore {
+  margin-bottom: 30px !important;
+}
+
+.tegs {
+  .ant-radio-button-wrapper {
+    opacity: 0.2;
+  }
+  .ant-radio-button-wrapper-checked {
+    opacity: 1;
+    box-shadow: none !important;
   }
 }
 
@@ -50,5 +72,16 @@
 }
 
 textarea.ant-input {
-  padding: 5px !important;
+  padding: 5px 0 !important;
+  border: none;
+  resize: none;
+  overflow: hidden;
+}
+
+.ant-checkbox-group {
+  display: grid !important;
+}
+
+.ant-checkbox-wrapper {
+  margin-left: 0 !important;
 }

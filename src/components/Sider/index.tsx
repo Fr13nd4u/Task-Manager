@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { ChangeEvent, KeyboardEvent, useContext, useState } from "react";
 import moment from "moment";
 import { Formik } from "formik";
 import {
@@ -23,14 +23,22 @@ interface IFormValues {
   date: object;
   description?: string;
   сhecked: [];
+  teg: {
+    name: string;
+    color: string;
+  };
 }
 
 const Sider = () => {
   const { tegs } = useContext(SiderContext);
   const [value, setValue] = useState("");
-  const [input, setInput] = useState("");
+  const [checklist, setChecklist] = useState<any>([]);
 
-  const checklist = ["Alfa", "Beta"];
+  // const [checklist, setChecklist] = useState<any>([
+  //   { id: 1, name: "Alabama" },
+  //   { id: 2, name: "Georgia" },
+  //   { id: 3, name: "Tennessee" },
+  // ]);
 
   const today = moment().format("DD MMM Y");
 
@@ -39,18 +47,32 @@ const Sider = () => {
     date: moment(today, "DD MMM Y"),
     description: "",
     сhecked: [],
+    teg: {
+      name: "",
+      color: "",
+    },
   };
 
   const disabledDate = (current: object) => {
     return current && current < moment().add(-1, "days");
   };
 
-  const handleAddCheck = (event: any) => {
+  const handleAddCheck = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
 
     if (value.trim()) {
-      checklist.push(value);
+      checklist.push({
+        id: Date.now(),
+        name: value,
+      });
+      setValue("");
     }
+  };
+
+  const handleKeyDown = (event: any) => {
+    event.target.style.height = "32px";
+
+    event.target.style.height = `${event.target.scrollHeight}px`;
   };
 
   return (
@@ -107,28 +129,35 @@ const Sider = () => {
                 <Input.TextArea
                   name="description"
                   placeholder="Descrive your event"
+                  rows={1}
+                  onKeyDown={handleKeyDown}
                 />
               </Form.Item>
 
               <Form.Item
                 name="chekclist"
                 label="Checklist"
-                className="input-block"
+                className="chekbox-block"
               >
                 <Checkbox.Group name="сhecked">
-                  {checklist.map((item: string, index: number) => (
-                    <Checkbox name="сhecked" value={item} key={index}>
+                  {checklist.map((item: any) => (
+                    <Checkbox name="сhecked" value={item.name} key={item.id}>
                       <Input
-                        name={item}
-                        defaultValue={item}
-                        onChange={(event) => setInput(event.target.value)}
+                        name={item.name}
+                        defaultValue={item.name}
+                        // onChange={(event) => setChecklist(event.target.value)}
                       />
                     </Checkbox>
                   ))}
                 </Checkbox.Group>
               </Form.Item>
 
-              <Checkbox name="addMore" disabled checked={false}>
+              <Checkbox
+                name="addMore"
+                disabled
+                checked={false}
+                className="addMore"
+              >
                 <Input
                   name="addMore"
                   value={value}
@@ -138,8 +167,8 @@ const Sider = () => {
                 />
               </Checkbox>
 
-              <Form.Item name="tegs">
-                <Radio.Group name="tegs" className="tegs">
+              <Form.Item name="teg">
+                <Radio.Group name="teg" className="tegs">
                   {tegs.map((teg: any, index: number) => (
                     <Teg key={index} teg={teg} />
                   ))}
