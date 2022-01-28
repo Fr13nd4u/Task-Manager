@@ -110,17 +110,23 @@ const Sider = () => {
                 />
               </Form.Item>
 
-              <Checkbox.Group name="сhecked">
-                {checklist.map((item: string, index: number) => (
-                  <Checkbox name="сhecked" value={item} key={index}>
-                    <Input
-                      name={item}
-                      defaultValue={item}
-                      onChange={(event) => setInput(event.target.value)}
-                    />
-                  </Checkbox>
-                ))}
-              </Checkbox.Group>
+              <Form.Item
+                name="chekclist"
+                label="Checklist"
+                className="input-block"
+              >
+                <Checkbox.Group name="сhecked">
+                  {checklist.map((item: string, index: number) => (
+                    <Checkbox name="сhecked" value={item} key={index}>
+                      <Input
+                        name={item}
+                        defaultValue={item}
+                        onChange={(event) => setInput(event.target.value)}
+                      />
+                    </Checkbox>
+                  ))}
+                </Checkbox.Group>
+              </Form.Item>
 
               <Checkbox name="addMore" disabled checked={false}>
                 <Input

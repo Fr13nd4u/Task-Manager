@@ -110,7 +110,7 @@ input {
 
   input[disabled] {
     &::placeholder {
-      color: $darkTextColor !important;
+      color: inherit !important;
     }
     cursor: default !important;
   }
@@ -124,4 +124,8 @@ input {
   right: -8px !important;
   top: calc(50% - 1px) !important;
   color: $blue !important;
+}
+
+.ant-checkbox-wrapper-checked {
+  color: $lightTextColor !important;
 }

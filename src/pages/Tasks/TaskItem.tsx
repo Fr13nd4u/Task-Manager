@@ -8,7 +8,9 @@ const TaskItem: FC<Props> = ({ title, date, teg }: Props) => {
 
   return (
     <div className="tasks-item">
-      <Checkbox name={title}>{title}</Checkbox>
+      <Checkbox.Group name={title}>
+        <Checkbox>{title}</Checkbox>
+      </Checkbox.Group>
       <div className="tasks-item_info">
         <DatePicker placeholder={dateValue} disabled />
         <Teg teg={teg} disabled />

@@ -6,15 +6,70 @@
   margin-bottom: 30px;
   padding: 5px;
   width: 100%;
+  min-height: 750px;
 
   &-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: $darkTextColor;
+    padding: 11px 25px 10px;
+    transition: 0.4s;
+
+    &:hover {
+      cursor: pointer;
+      background: $borderColor;
+      transition: 0.4s;
+
+      .ant-picker {
+        input {
+          color: $darkTextColor !important;
+          transition: 0.4s;
+        }
+
+        &-suffix {
+          color: $darkTextColor !important;
+          transition: 0.4s;
+        }
+      }
+    }
+
+    .ant-checkbox-wrapper {
+      color: $darkTextColor;
+      font-size: $CheckTextSize;
+      align-items: flex-start;
+    }
+
+    &_info {
+      .ant-picker {
+        margin-right: -20px;
+
+        input {
+          text-transform: none;
+          font-size: $smallSize !important;
+          color: $placeholderColor !important;
+          transition: 0.4s;
+        }
+
+        &-suffix {
+          color: $placeholderColor !important;
+          margin: 0 5px 2px 0 !important;
+          transition: 0.4s;
+        }
+      }
+
+      .ant-radio-button-wrapper {
+        margin: 0 !important;
+      }
+    }
+
+    .ant-checkbox + span {
+      padding-left: 15px;
+    }
   }
 
-  .ant-picker-suffix {
-    margin: 0 10px 2px 0 !important;
+  &-hr {
+    margin: -2px 25px 0;
+    border-color: $borderColor;
   }
 }

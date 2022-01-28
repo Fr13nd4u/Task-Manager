@@ -12,12 +12,15 @@ const Tasks: FC = () => {
   return (
     <div className="tasks">
       {tasks.map((task: any) => (
-        <TaskItem
-          key={task.id}
-          title={task.title}
-          date={task.date}
-          teg={task.teg}
-        />
+        <>
+          <TaskItem
+            key={task.id}
+            title={task.title}
+            date={task.date}
+            teg={task.teg}
+          />
+          <hr className="tasks-hr" />
+        </>
       ))}
     </div>
   );
